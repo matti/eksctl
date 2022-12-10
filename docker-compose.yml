@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  tailer:
+    build:
+      context: .
+      dockerfile: Dockerfile.matti
+      x-bake:
+        tags:
+          - ghcr.io/${GITHUB_REPOSITORY}:latest
+          - ghcr.io/${GITHUB_REPOSITORY}:${GITHUB_SHA}
+        platforms:
+          - linux/amd64
+          - linux/arm64
